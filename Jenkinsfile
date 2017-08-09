@@ -20,7 +20,7 @@ node () {
             wf.mvn("verify")
         }
         stage ('Push Package') {
-            wf.mvnReleasePush("-DskipTests deploy")
+            wf.mvnSnapshotPush("-DskipTests deploy")
         }
     }
     stage ('Build Image') {
