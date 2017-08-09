@@ -5,6 +5,10 @@ def builderImage = 'maven:latest'
 
 wf.init(this)
 node () {
+    stage ('Checkout'){
+        echo 'Checking out git repository'
+        checkout scm
+    }
     stage ('Code QA') {
         wf.codeQAwithConfigFile()
     }
