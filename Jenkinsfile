@@ -8,10 +8,13 @@ node () {
         echo 'Checking out git repository'
         checkout scm
     }
-    stage ('Code QA') {
-        wf.codeQAwithConfigFile()
-    }
     wf.builder(builderImage) {
+        stage ('Compile') {
+            wf.mvn("compile")
+        }
+        stage ('Code QA') {
+            wf.codeQAwithConfigFile()
+        }
         stage ('Build Package') {
             wf.mvn("-DskipTests clean package")
         }
