@@ -3,7 +3,6 @@ def appName = 'petclinic'
 def appServicePort = '8080'
 def builderImage = 'maven:latest'
 
-wf.init(this)
 node () {
     stage ('Checkout'){
         echo 'Checking out git repository'
