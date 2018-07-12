@@ -8,6 +8,11 @@ node () {
         echo 'Checking out git repository'
         checkout scm
     }
+    wf.builder(builderImage) {
+        stage ('Compile') {
+            wf.mvn("compile")
+        }
+    }
     stage ('Code QA') {
         wf.codeQAwithConfigFile()
     }
